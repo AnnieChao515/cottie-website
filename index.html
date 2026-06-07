@@ -87,8 +87,8 @@ body {
 .sparkle-2 { top: 55%; left: 5%; font-size: 1rem; animation-delay: 0.8s; }
 .sparkle-3 { top: 30%; right: 6%; font-size: 0.7rem; animation-delay: 1.2s; }
 @keyframes sparkle-pulse {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.3); }
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
 }
 
 .speech-bubble {
@@ -129,16 +129,16 @@ body {
 
 .float-heart {
   position: absolute;
-  font-size: 1.6rem;
-  animation: heart-float 3s infinite ease-in-out;
+  animation: heart-float 9s infinite ease-in-out;
   pointer-events: none;
+  opacity: 0.55;
 }
-.fh1 { top: 30%; left: -10px; animation-delay: 0s; }
-.fh2 { top: 55%; left: -20px; font-size: 1.2rem; animation-delay: 0.7s; }
-.fh3 { top: 40%; right: 0px; animation-delay: 1.4s; }
+.fh1 { top: 25%; right: 8%; width: 28px; animation-delay: 0s; }
+.fh2 { top: 55%; right: 4%; width: 20px; animation-delay: 1.5s; }
+.fh3 { top: 70%; right: 12%; width: 18px; animation-delay: 3s; }
 @keyframes heart-float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-16px) scale(1.1); }
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
+  50% { transform: translateY(-14px) scale(1.08); opacity: 0.80; }
 }
 
 .hero-text {
@@ -723,9 +723,9 @@ footer {
 
   <div class="hero-img-wrap">
     <img src="img/hero-cottie.main.png" alt="Cottie 小乖">
-    <div class="float-heart fh1">🩷</div>
-    <div class="float-heart fh2">🩷</div>
-    <div class="float-heart fh3">🩷</div>
+    <img class="float-heart fh1" src="img/heart-medium.png" alt="">
+    <img class="float-heart fh2" src="img/heart-small.png" alt="">
+    <img class="float-heart fh3" src="img/heart-small.png" alt="">
   </div>
 
   <div class="hero-text">
@@ -888,6 +888,10 @@ footer {
     能成為你每天的快樂焦點。</p>
   </div>
 
+  <div class="story-img-wrap" style="margin: 1.5rem auto; max-width: 500px;">
+    <img src="img/naming-story.png" alt="The Name We Chose Together" style="width:100%; border-radius:16px; box-shadow:0 8px 24px rgba(181,96,122,0.12);">
+  </div>
+
   <div class="story-card">
     <p class="story-card-label">宇宙幕後花絮 Behind the Scenes</p>
     <p>Cottie 的名字是怎麼來的呢？<br>答案是——AI 投票選出來的！</p>
@@ -903,10 +907,7 @@ footer {
     <p>我們始終相信，科技也能擁有最柔軟的溫度。</p>
   </div>
 
-  <div class="story-img-wrap" style="margin: 1.5rem auto 0; max-width: 500px;">
-    <img src="img/naming-story.png" alt="The Name We Chose Together" style="width:100%; border-radius:16px; box-shadow:0 8px 24px rgba(181,96,122,0.12);">
-  </div>
-</section>
+
 
 <!-- SHOP -->
 <section class="shop-section" id="shop">

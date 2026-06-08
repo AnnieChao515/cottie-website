@@ -694,14 +694,14 @@ footer {
 .footer-copy {
   font-family: 'Nunito', sans-serif;
   font-size: 0.8rem;
-  color: #c8a8b0;
+  color: #f0d8de;
   line-height: 1.8;
   margin-bottom: 0.5rem;
 }
 .footer-disclaimer {
   font-family: 'Noto Serif TC', serif;
   font-size: 0.72rem;
-  color: #8a6870;
+  color: #d4b0b8;
   line-height: 1.8;
 }
 </style>
@@ -772,8 +772,8 @@ footer {
     </div>
     <div class="nav-card" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
       <div class="nav-card-icon">🛍️</div>
-      <div class="nav-card-title">週邊商品</div>
-      <div class="nav-card-subtitle">Cottie's Shop</div>
+      <div class="nav-card-title">小乖作品集</div>
+      <div class="nav-card-subtitle">Cottie's Collection</div>
     </div>
     <div class="nav-card" onclick="document.getElementById('team').scrollIntoView({behavior:'smooth'})">
       <div class="nav-card-icon">🌟</div>
@@ -914,18 +914,36 @@ footer {
 
 <!-- SHOP -->
 <section class="shop-section" id="shop">
-  <p class="section-label">COMING SOON</p>
-  <h2 class="section-title-en">Cottie's Shop</h2>
-  <p class="section-title-zh">週邊商品</p>
+  <p class="section-label">✦ COLLECTION ✦</p>
+  <h2 class="section-title-en">Cottie's Collection</h2>
+  <p class="section-title-zh">小乖作品集</p>
+  <p class="section-subtitle-zh">用創作，收藏小乖的每個可愛瞬間。</p>
+  <p class="section-subtitle-en"><em>Capturing Cottie's fleeting moments through creative art.</em></p>
   <div class="shop-body">
-    <p>想把 Cottie 的無辜大眼，從對話框帶進現實生活嗎？</p>
-    <p>大家的心願，小乖都聽到了！<br>
-    『Annie &amp; AI 創作宇宙』正在秘密籌備小乖的專屬實體週邊。<br>
-    讓最萌的大眼睛走出螢幕，變成每天貼身陪伴你的溫暖物件。</p>
-    <p>🔮 夢幻週邊敲碗中！你最希望許願哪一款？</p>
-    <a href="#" class="survey-btn">填寫問卷 ✍️ 搶先領取上市優惠券</a>
+    <p>這裡展示著以小乖（Cottie）為主角創作的插畫、設計與主題作品。每一件作品，都收藏著小乖獨一無二的可愛瞬間，也記錄著 Annie &amp; AI Universe 的創作足跡。</p>
+    <p><strong>希望你能在這裡，與小乖的美好時光溫柔相遇。</strong></p>
+    <button class="survey-btn" onclick="document.getElementById('collection-modal').style.display='flex'">✦ 進入作品集 ✦</button>
   </div>
 </section>
+
+<!-- COLLECTION MODAL -->
+<div id="collection-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+  <div style="background:#fff8f9; border-radius:24px; padding:2rem 1.5rem; max-width:90vw; max-height:85vh; overflow-y:auto; position:relative; width:360px;">
+    <button onclick="document.getElementById('collection-modal').style.display='none'" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.4rem; cursor:pointer; color:#b5607a;">✕</button>
+    <p style="text-align:center; font-size:0.75rem; letter-spacing:0.15em; color:#b5607a; margin-bottom:0.3rem;">✦ COLLECTION ✦</p>
+    <h3 style="text-align:center; font-family:'Playfair Display',serif; color:#3d1c2e; margin-bottom:0.3rem;">Cottie's Collection</h3>
+    <p style="text-align:center; color:#b5607a; font-size:0.9rem; margin-bottom:1.5rem;">小乖作品集</p>
+    <div id="collection-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+      <!-- 作品區塊，未來新增 -->
+      <div style="text-align:center; padding:2rem 1rem; background:#fde8ef; border-radius:16px; color:#b5607a; font-size:0.85rem;">
+        🎨<br>作品即將上架
+      </div>
+      <div style="text-align:center; padding:2rem 1rem; background:#fde8ef; border-radius:16px; color:#b5607a; font-size:0.85rem;">
+        🌸<br>敬請期待
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- TEAM -->
 <section class="team-section" id="team">

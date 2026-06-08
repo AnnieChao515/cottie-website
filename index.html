@@ -139,7 +139,7 @@ body {
   width: min(340px, 88vw);
   margin: 0 auto;
 }
-.hero-img-wrap img {
+.hero-img-wrap img:first-child {
   width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 12px 30px rgba(181,96,122,0.15));
@@ -149,14 +149,14 @@ body {
   position: absolute;
   animation: heart-float 9s infinite ease-in-out;
   pointer-events: none;
-  opacity: 0.55;
+  z-index: 2;
   width: auto !important;
   object-fit: unset !important;
   filter: none !important;
 }
-.fh1 { top: 20%; right: 2%; width: 16px !important; animation-delay: 0s; }
-.fh2 { top: 50%; right: 1%; width: 12px !important; animation-delay: 1.5s; }
-.fh3 { top: 72%; right: 3%; width: 10px !important; animation-delay: 3s; }
+.fh1 { top: 25%; left: -10%; width: 38px !important; animation-delay: 0s; }
+.fh2 { top: 55%; left: -8%; width: 30px !important; animation-delay: 2s; }
+.fh3 { top: 60%; right: -6%; width: 34px !important; animation-delay: 4s; }
 @keyframes heart-float {
   0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
   50% { transform: translateY(-14px) scale(1.08); opacity: 0.80; }
@@ -750,11 +750,10 @@ footer {
 
   <div class="hero-img-wrap">
     <img src="img/hero-cottie.main.png" alt="Cottie 小乖">
+    <img class="float-heart fh1" src="img/heart-medium.png" alt="">
+    <img class="float-heart fh2" src="img/heart-small.png" alt="">
+    <img class="float-heart fh3" src="img/heart-small.png" alt="">
   </div>
-
-  <svg class="float-heart fh1" width="44" height="40" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 18.5S1.5 12 1.5 6A4.5 4.5 0 0 1 10 3.5a1 1 0 0 0 2 0A4.5 4.5 0 0 1 20.5 6C20.5 12 11 18.5 11 18.5Z" fill="rgba(230,160,175,0.55)" stroke="rgba(210,130,150,0.3)" stroke-width="0.5"/></svg>
-  <svg class="float-heart fh2" width="36" height="33" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 18.5S1.5 12 1.5 6A4.5 4.5 0 0 1 10 3.5a1 1 0 0 0 2 0A4.5 4.5 0 0 1 20.5 6C20.5 12 11 18.5 11 18.5Z" fill="rgba(245,185,195,0.45)" stroke="rgba(210,130,150,0.2)" stroke-width="0.5"/></svg>
-  <svg class="float-heart fh3" width="40" height="36" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 18.5S1.5 12 1.5 6A4.5 4.5 0 0 1 10 3.5a1 1 0 0 0 2 0A4.5 4.5 0 0 1 20.5 6C20.5 12 11 18.5 11 18.5Z" fill="rgba(235,170,185,0.50)" stroke="rgba(210,130,150,0.25)" stroke-width="0.5"/></svg>
 
   <div class="hero-text">
     <div class="hero-title-wrap">

@@ -439,36 +439,35 @@ body {
 /* 愛心基底 */
 .carousel-heart {
   position: absolute;
-  font-size: 2rem;
+  width: 44px;
+  height: auto;
   opacity: 0;
   pointer-events: none;
-  color: #e8003d;
 }
-/* 第2張：揮手愛心 — 手掌旁往上飄 */
+/* 第2張：揮手愛心 — 手掌正上方 */
 .waving-heart {
-  bottom: 38%;
-  right: 8%;
-  font-size: 2.2rem;
+  bottom: 42%;
+  right: 14%;
   animation: heartFloat 1.8s ease-in-out infinite;
 }
 /* 第4張：撒嬌愛心1 — 眼睛左上方 */
 .affectionate-heart1 {
-  top: 18%;
-  left: 28%;
-  font-size: 2rem;
+  top: 16%;
+  left: 24%;
+  width: 40px;
   animation: heartFloat 2s ease-in-out infinite;
 }
 /* 第4張：撒嬌愛心2 — 稍左稍高 */
 .affectionate-heart2 {
-  top: 10%;
-  left: 18%;
-  font-size: 1.6rem;
+  top: 8%;
+  left: 14%;
+  width: 32px;
   animation: heartFloat 2s ease-in-out 0.6s infinite;
 }
 @keyframes heartFloat {
-  0%   { transform: translateY(0);    opacity: 0; }
-  20%  { opacity: 1; }
-  80%  { opacity: 0.8; }
+  0%   { transform: translateY(0);     opacity: 0; }
+  20%  { opacity: 0.9; }
+  80%  { opacity: 0.75; }
   100% { transform: translateY(-36px); opacity: 0; }
 }
 
@@ -931,8 +930,8 @@ footer {
     </div>
     <div class="carousel-slide" data-index="1">
       <img src="img/cottie-waving.png" alt="Cottie 揮手">
-      <!-- 揮手愛心：手掌旁飄出 -->
-      <span class="carousel-heart waving-heart">❤</span>
+      <!-- 揮手愛心：手掌上方冒出 -->
+      <img class="carousel-heart waving-heart" src="img/heart-big.png" alt="">
     </div>
     <div class="carousel-slide" data-index="2">
       <img src="img/cottie-curious.png" alt="Cottie 好奇">
@@ -940,8 +939,8 @@ footer {
     <div class="carousel-slide" data-index="3">
       <img src="img/cottie-affectionate.png" alt="Cottie 撒嬌">
       <!-- 撒嬌愛心：眼睛左上角兩顆 -->
-      <span class="carousel-heart affectionate-heart1">❤</span>
-      <span class="carousel-heart affectionate-heart2">❤</span>
+      <img class="carousel-heart affectionate-heart1" src="img/heart-big.png" alt="">
+      <img class="carousel-heart affectionate-heart2" src="img/heart-big.png" alt="">
     </div>
     <div class="carousel-slide" data-index="4">
       <img src="img/cottie-playing.png" alt="Cottie 玩耍">
@@ -1194,26 +1193,8 @@ footer {
     });
   })();
 
-  // 根據小乖 hero 圖片實際位置，精準定位 hero heart2
-  function positionHearts() {
-    const wrap = document.querySelector('.hero-img-wrap');
-    const cottie = wrap ? wrap.querySelector('img:first-child') : null;
-    const heart2 = wrap ? wrap.querySelector('.heart2') : null;
-    if (!cottie || !heart2) return;
-    const rect = cottie.getBoundingClientRect();
-    const wrapRect = wrap.getBoundingClientRect();
-    const relTop = (rect.top - wrapRect.top) + rect.height * 0.48;
-    heart2.style.top = relTop + 'px';
-    heart2.style.left = (rect.left - wrapRect.left + 20) + 'px';
-    heart2.style.position = 'absolute';
-  }
-  const heroWrap = document.querySelector('.hero-img-wrap');
-  const heroImg = heroWrap ? heroWrap.querySelector('img:first-child') : null;
-  if (heroImg) {
-    if (heroImg.complete) { positionHearts(); }
-    else { heroImg.addEventListener('load', positionHearts); }
-  }
-  window.addEventListener('resize', positionHearts);
+  window.addEventListener('resize', function() {});
+
 </script>
 </body>
 </html>

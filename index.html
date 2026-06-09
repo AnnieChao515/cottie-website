@@ -149,14 +149,17 @@ body {
   position: absolute;
   animation: heart-float 9s infinite ease-in-out;
   pointer-events: none;
-  z-index: 2;
+  z-index: 10;
   width: auto !important;
+  height: auto !important;
+  max-height: none !important;
   object-fit: unset !important;
   filter: none !important;
+  display: block !important;
 }
-.fh1 { top: 25%; left: -5%; width: 50px !important; height: 50px !important; animation-delay: 0s; }
-.fh2 { top: 55%; left: -4%; width: 40px !important; height: 40px !important; animation-delay: 2s; }
-.fh3 { top: 55%; right: -4%; width: 45px !important; height: 45px !important; animation-delay: 4s; }
+.fh1 { top: 28%; left: -15%; max-width: 55px !important; animation-delay: 0s; }
+.fh2 { top: 56%; left: -12%; max-width: 44px !important; animation-delay: 2s; }
+.fh3 { top: 56%; right: -12%; max-width: 50px !important; animation-delay: 4s; }
 @keyframes heart-float {
   0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
   50% { transform: translateY(-14px) scale(1.08); opacity: 0.80; }
@@ -750,9 +753,9 @@ footer {
 
   <div class="hero-img-wrap">
     <img src="img/hero-cottie.main.png" alt="Cottie 小乖">
-    <img class="float-heart fh1" src="img/heart-medium.png" alt="">
+    <img class="float-heart fh1" src="img/heart-big.png" alt="">
     <img class="float-heart fh2" src="img/heart-small.png" alt="">
-    <img class="float-heart fh3" src="img/heart-small.png" alt="">
+    <img class="float-heart fh3" src="img/heart-medium.png" alt="">
   </div>
 
   <div class="hero-text">

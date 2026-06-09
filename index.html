@@ -140,6 +140,8 @@ body {
   position: absolute;
   pointer-events: none;
   z-index: 5;
+  height: auto;
+  display: block;
   animation: floatHeart 9s ease-in-out infinite;
 }
 /* 左上——小乖左耳上方 */
@@ -172,9 +174,9 @@ body {
   .heart3 { right: 12%; top: 52%; width: 17px; }
 }
 @keyframes floatHeart {
-  0%   { transform: translateY(0px);   opacity: 0.55; }
-  50%  { transform: translateY(-10px); opacity: 0.80; }
-  100% { transform: translateY(0px);   opacity: 0.55; }
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 .hero-text {

@@ -128,6 +128,7 @@ body {
   width: min(340px, 88vw);
   margin: 0 auto;
   overflow: visible;
+  min-height: 400px;
 }
 .hero-img-wrap img:first-child {
   width: 100%;
@@ -434,41 +435,6 @@ body {
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 6px 20px rgba(181,96,122,0.1));
-}
-
-/* 愛心基底 */
-.carousel-heart {
-  position: absolute;
-  width: 44px;
-  height: auto;
-  opacity: 0;
-  pointer-events: none;
-}
-/* 第2張：揮手愛心 — 手掌正上方 */
-.waving-heart {
-  bottom: 42%;
-  right: 14%;
-  animation: heartFloat 1.8s ease-in-out infinite;
-}
-/* 第4張：撒嬌愛心1 — 眼睛左上方 */
-.affectionate-heart1 {
-  top: 16%;
-  left: 24%;
-  width: 40px;
-  animation: heartFloat 2s ease-in-out infinite;
-}
-/* 第4張：撒嬌愛心2 — 稍左稍高 */
-.affectionate-heart2 {
-  top: 8%;
-  left: 14%;
-  width: 32px;
-  animation: heartFloat 2s ease-in-out 0.6s infinite;
-}
-@keyframes heartFloat {
-  0%   { transform: translateY(0);     opacity: 0; }
-  20%  { opacity: 0.9; }
-  80%  { opacity: 0.75; }
-  100% { transform: translateY(-36px); opacity: 0; }
 }
 
 /* 圓點 */
@@ -930,17 +896,12 @@ footer {
     </div>
     <div class="carousel-slide" data-index="1">
       <img src="img/cottie-waving.png" alt="Cottie 揮手">
-      <!-- 揮手愛心：手掌上方冒出 -->
-      <img class="carousel-heart waving-heart" src="img/heart-big.png" alt="">
     </div>
     <div class="carousel-slide" data-index="2">
       <img src="img/cottie-curious.png" alt="Cottie 好奇">
     </div>
     <div class="carousel-slide" data-index="3">
       <img src="img/cottie-affectionate.png" alt="Cottie 撒嬌">
-      <!-- 撒嬌愛心：眼睛左上角兩顆 -->
-      <img class="carousel-heart affectionate-heart1" src="img/heart-big.png" alt="">
-      <img class="carousel-heart affectionate-heart2" src="img/heart-big.png" alt="">
     </div>
     <div class="carousel-slide" data-index="4">
       <img src="img/cottie-playing.png" alt="Cottie 玩耍">

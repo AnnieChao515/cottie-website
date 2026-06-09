@@ -97,18 +97,7 @@ body {
   50% { opacity: 0.65; transform: scale(1.1); }
 }
 
-.float-heart {
-  position: absolute;
-  animation: heart-float 10s infinite ease-in-out;
-  pointer-events: none;
-}
-.fh1 { top: 30%; left: 6%; animation-delay: 0s; }
-.fh2 { top: 52%; left: 5%; animation-delay: 2s; }
-.fh3 { top: 62%; right: 6%; animation-delay: 4s; }
-@keyframes heart-float {
-  0%, 100% { transform: translateY(0); opacity: 0.4; }
-  50% { transform: translateY(-12px); opacity: 0.7; }
-}
+
 .speech-bubble {
   background: rgba(255,255,255,0.9);
   border: 1.5px solid var(--blush);
@@ -145,24 +134,46 @@ body {
   filter: drop-shadow(0 12px 30px rgba(181,96,122,0.15));
 }
 
-.float-heart {
+/* ===== FLOATING HEARTS ===== */
+.heart1, .heart2, .heart3 {
   position: absolute;
-  animation: heart-float 9s infinite ease-in-out;
   pointer-events: none;
-  z-index: 10;
-  width: auto !important;
-  height: auto !important;
-  max-height: none !important;
-  object-fit: unset !important;
-  filter: none !important;
-  display: block !important;
+  z-index: 5;
+  animation: floatHeart 9s ease-in-out infinite;
 }
-.fh1 { top: 28%; left: -2%; max-width: 40px !important; animation-delay: 0s; }
-.fh2 { top: 56%; left: 0%; max-width: 62px !important; animation-delay: 2s; }
-.fh3 { top: 30%; right: -2%; max-width: 70px !important; animation-delay: 4s; }
-@keyframes heart-float {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
-  50% { transform: translateY(-14px) scale(1.08); opacity: 0.80; }
+/* 左上——小乖左耳上方 */
+.heart1 {
+  width: 26px;
+  left: 18%;
+  top: 15%;
+  animation-delay: 0s;
+  opacity: 0.72;
+}
+/* 左側——小乖左手旁 */
+.heart2 {
+  width: 20px;
+  left: 14%;
+  top: 50%;
+  animation-delay: 3s;
+  opacity: 0.62;
+}
+/* 右側——小乖右手旁 */
+.heart3 {
+  width: 18px;
+  right: 16%;
+  top: 50%;
+  animation-delay: 6s;
+  opacity: 0.58;
+}
+@media (max-width: 768px) {
+  .heart1 { left: 14%; top: 18%; width: 24px; }
+  .heart2 { left: 10%; top: 58%; width: 19px; }
+  .heart3 { right: 12%; top: 52%; width: 17px; }
+}
+@keyframes floatHeart {
+  0%   { transform: translateY(0px);   opacity: 0.55; }
+  50%  { transform: translateY(-10px); opacity: 0.80; }
+  100% { transform: translateY(0px);   opacity: 0.55; }
 }
 
 .hero-text {
@@ -753,9 +764,9 @@ footer {
 
   <div class="hero-img-wrap">
     <img src="img/hero-cottie.main.png" alt="Cottie 小乖">
-    <img class="float-heart fh1" src="img/heart-big.png" alt="">
-    <img class="float-heart fh2" src="img/heart-small.png" alt="">
-    <img class="float-heart fh3" src="img/heart-medium.png" alt="">
+    <img class="heart1" src="img/heart-big.png" alt="">
+    <img class="heart2" src="img/heart-small.png" alt="">
+    <img class="heart3" src="img/heart-medium.png" alt="">
   </div>
 
   <div class="hero-text">
@@ -1057,6 +1068,27 @@ footer {
   function sendEmail() {
     alert('聯絡功能即將上線，敬請期待！🐾');
   }
+
+  // 根據小乖 hero 圖片實際位置，精準定位 heart2
+  function positionHearts() {
+    const wrap = document.querySelector('.hero-img-wrap');
+    const cottie = wrap ? wrap.querySelector('img:first-child') : null;
+    const heart2 = document.querySelector('.heart2');
+    if (!cottie || !heart2) return;
+    const rect = cottie.getBoundingClientRect();
+    const wrapRect = wrap.getBoundingClientRect();
+    const relTop = (rect.top - wrapRect.top) + rect.height * 0.48;
+    heart2.style.top = relTop + 'px';
+    heart2.style.left = (rect.left - wrapRect.left + 20) + 'px';
+    heart2.style.position = 'absolute';
+  }
+  const heroWrap = document.querySelector('.hero-img-wrap');
+  const heroImg = heroWrap ? heroWrap.querySelector('img:first-child') : null;
+  if (heroImg) {
+    if (heroImg.complete) { positionHearts(); }
+    else { heroImg.addEventListener('load', positionHearts); }
+  }
+  window.addEventListener('resize', positionHearts);
 </script>
 </body>
 </html>

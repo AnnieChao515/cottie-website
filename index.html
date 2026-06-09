@@ -144,6 +144,7 @@ body {
 }
 /* 左上——小乖左耳上方 */
 .heart1 {
+  width: 38px;
   left: 12%;
   top: 15%;
   animation-delay: 0s;
@@ -151,6 +152,7 @@ body {
 }
 /* 左側——小乖左手旁 */
 .heart2 {
+  width: 32px;
   left: 4%;
   top: 50%;
   animation-delay: 3s;
@@ -158,15 +160,16 @@ body {
 }
 /* 右側——小乖右手旁 */
 .heart3 {
+  width: 28px;
   right: 4%;
   top: 48%;
   animation-delay: 6s;
   opacity: 0.58;
 }
 @media (max-width: 768px) {
-  .heart1 { left: 8%; top: 18%; }
-  .heart2 { left: 2%; top: 55%; }
-  .heart3 { right: 2%; top: 50%; }
+  .heart1 { left: 8%; top: 18%; width: 36px; }
+  .heart2 { left: 2%; top: 55%; width: 30px; }
+  .heart3 { right: 2%; top: 50%; width: 26px; }
 }
 @keyframes floatHeart {
   0%   { transform: translateY(0px);   opacity: 0.55; }
@@ -763,8 +766,8 @@ footer {
   <div class="hero-img-wrap">
     <img src="img/hero-cottie.main.png" alt="Cottie 小乖">
     <img class="heart1" src="img/heart-big.png" alt="">
-    <img class="heart2" src="img/heart-small.png" alt="">
-    <img class="heart3" src="img/heart-medium.png" alt="">
+    <img class="heart2" src="img/heart-big.png" alt="">
+    <img class="heart3" src="img/heart-big.png" alt="">
   </div>
 
   <div class="hero-text">

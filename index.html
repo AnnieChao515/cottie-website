@@ -1022,7 +1022,7 @@ footer {
 
 <!-- COLLECTION MODAL -->
 <div id="collection-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
-  <div style="background:#fff8f9; border-radius:24px; padding:2rem 1.5rem; max-width:90vw; max-height:85vh; overflow-y:auto; position:relative; width:360px;">
+  <div style="background:#ffffff; border-radius:24px; padding:2rem 1.5rem; max-width:90vw; max-height:85vh; overflow-y:auto; position:relative; width:360px;">
     <button onclick="document.getElementById('collection-modal').style.display='none'" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.4rem; cursor:pointer; color:#b5607a;">✕</button>
     <p style="text-align:center; font-size:0.75rem; letter-spacing:0.15em; color:#b5607a; margin-bottom:0.3rem;">✦ COLLECTION ✦</p>
     <h3 style="text-align:center; font-family:'Playfair Display',serif; color:#3d1c2e; margin-bottom:0.3rem;">Cottie's Collection</h3>
@@ -1072,14 +1072,25 @@ function closeLightbox() {
         return;
       }
 
-      grid.innerHTML = rows.map(row => {
+      // 過濾掉標題列（第一行 title/img/tag）和空白列
+      const dataRows = rows.filter(row => {
+        const val = row.c[0] ? row.c[0].v : '';
+        return val && val !== 'title';
+      });
+
+      if (dataRows.length === 0) {
+        grid.innerHTML = '<div style="text-align:center; padding:2rem; color:#b5607a; grid-column:1/-1;">🌸 作品即將上架，敬請期待！</div>';
+        return;
+      }
+
+      grid.innerHTML = dataRows.map(row => {
         const title = row.c[0] ? row.c[0].v : '';
         const img   = row.c[1] ? row.c[1].v : '';
         return `
-          <div style="background:#fff; border-radius:0; overflow:hidden;">
+          <div style="background:#fff; overflow:hidden;">
             <img src="${img}" alt="${title}"
               style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"
-              onerror="this.style.background='#fde8ef'; this.alt='🎨 圖片準備中';">
+              onerror="this.style.display='none';">
             <div style="padding:0.7rem 0.2rem 0.9rem; text-align:center;">
               <div style="font-size:0.95rem; font-weight:600; color:#3d1c2e; margin-bottom:0.6rem;">${title}</div>
               <button onclick="openLightbox('${img}','${title}')"

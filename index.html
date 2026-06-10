@@ -1027,17 +1027,75 @@ footer {
     <p style="text-align:center; font-size:0.75rem; letter-spacing:0.15em; color:#b5607a; margin-bottom:0.3rem;">✦ COLLECTION ✦</p>
     <h3 style="text-align:center; font-family:'Playfair Display',serif; color:#3d1c2e; margin-bottom:0.3rem;">Cottie's Collection</h3>
     <p style="text-align:center; color:#b5607a; font-size:0.9rem; margin-bottom:1.5rem;">小乖作品集</p>
-    <div id="collection-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-      <!-- 作品區塊，未來新增 -->
-      <div style="text-align:center; padding:2rem 1rem; background:#fde8ef; border-radius:16px; color:#b5607a; font-size:0.85rem;">
-        🎨<br>作品即將上架
-      </div>
-      <div style="text-align:center; padding:2rem 1rem; background:#fde8ef; border-radius:16px; color:#b5607a; font-size:0.85rem;">
-        🌸<br>敬請期待
-      </div>
+    <div id="collection-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;">
+      <div style="text-align:center; padding:2rem; color:#b5607a; grid-column:1/-1;">🌸 載入中...</div>
     </div>
   </div>
 </div>
+
+<!-- 放大看圖 Lightbox -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:2000; align-items:center; justify-content:center; cursor:pointer;">
+  <div style="position:relative; max-width:92vw; max-height:88vh;" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="" style="max-width:92vw; max-height:82vh; border-radius:16px; box-shadow:0 8px 40px rgba(0,0,0,0.4); display:block;">
+    <p id="lightbox-title" style="text-align:center; color:#fff; margin-top:0.8rem; font-size:1rem; font-weight:600;"></p>
+    <button onclick="closeLightbox()" style="position:absolute; top:-0.8rem; right:-0.8rem; background:#fff; border:none; border-radius:50%; width:2rem; height:2rem; font-size:1rem; cursor:pointer; color:#3d1c2e; box-shadow:0 2px 8px rgba(0,0,0,0.2);">✕</button>
+  </div>
+</div>
+
+<script>
+function openLightbox(img, title) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = img;
+  document.getElementById('lightbox-title').textContent = title;
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+(function() {
+  const SHEET_ID = '14rDieVN8IK9ELVuxvYpsU7iK1eJlkscydUNcOEA-0E8';
+  const SHEET_NAME = 'Works';
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${SHEET_NAME}`;
+
+  fetch(url)
+    .then(res => res.text())
+    .then(text => {
+      const json = JSON.parse(text.substring(47).slice(0, -2));
+      const rows = json.table.rows;
+      const grid = document.getElementById('collection-grid');
+
+      if (!rows || rows.length === 0) {
+        grid.innerHTML = '<div style="text-align:center; padding:2rem; color:#b5607a; grid-column:1/-1;">🌸 作品即將上架，敬請期待！</div>';
+        return;
+      }
+
+      grid.innerHTML = rows.map(row => {
+        const title = row.c[0] ? row.c[0].v : '';
+        const img   = row.c[1] ? row.c[1].v : '';
+        return `
+          <div style="background:#fff; border-radius:0; overflow:hidden;">
+            <img src="${img}" alt="${title}"
+              style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"
+              onerror="this.style.background='#fde8ef'; this.alt='🎨 圖片準備中';">
+            <div style="padding:0.7rem 0.2rem 0.9rem; text-align:center;">
+              <div style="font-size:0.95rem; font-weight:600; color:#3d1c2e; margin-bottom:0.6rem;">${title}</div>
+              <button onclick="openLightbox('${img}','${title}')"
+                style="background:#fff; border:1.5px solid #ccc; border-radius:8px; padding:0.4rem 1rem; cursor:pointer; font-size:0.78rem; color:#555; line-height:1.5;">
+                放大看圖<br><span style="font-size:0.72rem; color:#999;">View full ↗</span>
+              </button>
+            </div>
+          </div>`;
+      }).join('');
+    })
+    .catch(() => {
+      document.getElementById('collection-grid').innerHTML =
+        '<div style="text-align:center; padding:2rem; color:#b5607a; grid-column:1/-1;">🌸 作品即將上架，敬請期待！</div>';
+    });
+})();
+</script>
 
 <!-- TEAM -->
 <section class="team-section" id="team">

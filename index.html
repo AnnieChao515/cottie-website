@@ -776,6 +776,7 @@ footer {
   line-height: 1.8;
 }
 </style>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -1116,7 +1117,7 @@ function closeLightbox() {
 
   <div class="team-grid">
     <div class="team-card">
-      <img src="img/Annie.logo.png" alt="Annie Chao" style="width:140px;height:auto;margin:0 auto 0.8rem;display:block;">
+      <img src="img/Annie.logo.png" alt="Annie Chao" style="width:140px;max-height:160px;object-fit:contain;margin:0 auto 0.8rem;display:block;">
       <div class="team-card-name">Annie Chao</div>
       <div class="team-card-role">品牌總監 · Brand Director</div>
       <p class="team-card-desc">負責品牌的核心審美、情感溫度，以及對極致生活品質的追求。是整個宇宙的領航員。</p>
@@ -1158,11 +1159,18 @@ function closeLightbox() {
   </p>
 
   <div class="contact-form">
-    <input type="text" placeholder="Name" id="contact-name">
-    <input type="email" placeholder="Email" id="contact-email">
-    <textarea placeholder="Message" id="contact-message"></textarea>
-    <button class="contact-btn" onclick="sendEmail()">✉️ 點擊直接發信給 Annie</button>
-    <p class="contact-note">※ EmailJS 串接功能即將上線，敬請期待。</p>
+    <form id="contact-form" action="https://formspree.io/f/mrevavnw" method="POST">
+      <input type="text" name="name" placeholder="您的姓名 Name" required>
+      <input type="email" name="email" placeholder="您的信箱 Email" required>
+      <textarea name="message" placeholder="訊息內容 Message" required></textarea>
+      <!-- 蜜罐欄位：機器人會填，真人不會 -->
+      <input type="text" name="_gotcha" style="display:none">
+      <input type="hidden" name="_subject" value="✉️ 來自 Cottie 網站的新訊息">
+      <!-- reCAPTCHA -->
+      <div class="g-recaptcha" data-sitekey="6LeVsBktAAAAAP26nZY5u93-a86SSs2_RebZFK8U" style="margin:0.8rem 0;"></div>
+      <button type="submit" class="contact-btn">✉️ 送出訊息給 Annie</button>
+    </form>
+    <p id="form-success" style="display:none; text-align:center; color:#b5607a; margin-top:1rem;">🐾 訊息已送出！Annie 會盡快回覆你。</p>
   </div>
 </section>
 
@@ -1172,6 +1180,16 @@ function closeLightbox() {
   <p class="footer-copy">© 2026 Annie Chao · Annie &amp; AI Universe · All Rights Reserved</p>
   <p class="footer-disclaimer">本網站提及之 AI 工具商標屬原公司所有，本站僅用於展示技術合作歷程，並非由其官方授權營運。</p>
 </footer>
+<script>
+  // 聯絡表單送出成功顯示感謝訊息
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('success') === 'true') {
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    if (form) form.style.display = 'none';
+    if (success) success.style.display = 'block';
+  }
+</script>
 
 <script>
   window.addEventListener('DOMContentLoaded', () => {

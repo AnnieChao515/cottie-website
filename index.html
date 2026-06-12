@@ -137,6 +137,23 @@ body {
   z-index: 2;
 }
 
+/* ===== FILTER BUTTONS ===== */
+.filter-btn {
+  background: #fff;
+  border: 1.5px solid #d4a0b0;
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-size: 0.82rem;
+  color: #b5607a;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover, .active-filter {
+  background: #b5607a !important;
+  color: #fff !important;
+  border-color: #b5607a !important;
+}
+
 /* ===== FLOATING HEARTS ===== */
 .heart1, .heart2, .heart3 {
   position: absolute;
@@ -976,16 +993,11 @@ footer {
   <div class="story-body">
     <p>小乖（Cottie）是一隻長著神奇大眼睛的馬爾濟斯。</p>
     <p><span class="story-italic">The Eyes That Catch You.</span> —— 這是小乖與你相遇的起點。</p>
-    <p>在 Annie &amp; AI 創作宇宙裡，<br>
-    小乖不只是可愛的角色，<br>
-    更是一份關於陪伴、溫暖與療癒的記錄。</p>
-    <p>從第一張貼圖、第一幅插畫，<br>
-    到每一次與 AI 共同創作的靈感火花，<br>
-    小乖一步步成長成今天的模樣。</p>
-    <p>在這裡，記錄著牠的日常調皮與溫馨瞬間，<br>
-    也記錄著人類創意與 AI 技術攜手創作的美好旅程。</p>
-    <p>希望這雙亮晶晶的大眼睛，<br>
-    能成為你每天的快樂焦點。</p>
+    <p>在 Annie &amp; AI 創作宇宙裡，小乖不只是可愛的角色，更是一份關於陪伴、溫暖與療癒的記錄。</p>
+    <p>從第一張貼圖、第一件作品，到每一次與 AI 共同創作的靈感火花，小乖一步步成長成今天的模樣。</p>
+    <p>小乖的創作作品橫跨角色插畫（Character Illustration）與 AI 夢幻擬真藝術（AI Dreamy Semi-Realistic Art）兩種風格。透過柔和光影、細膩毛髮與童話般的夢幻氛圍，描繪出屬於 Cottie 的溫暖世界。</p>
+    <p>在這裡，記錄著牠的日常調皮與溫馨瞬間，也記錄著人類創意與 AI 技術攜手創作的美好旅程。</p>
+    <p>希望這雙亮晶晶的大眼睛，能成為你每天的快樂焦點。</p>
   </div>
 
   <div class="story-img-wrap" style="margin: 1.5rem auto; max-width: 500px;">
@@ -1015,7 +1027,7 @@ footer {
   <h2 class="section-title-en">Cottie's Collection</h2>
   <p class="section-title-zh">小乖作品集</p>
   <div class="shop-body">
-    <p style="text-align:center;">這裡展示著以小乖（Cottie）為主角創作的插畫、設計與主題作品。<br>每一件作品，都收藏著小乖獨一無二的可愛瞬間，<br>也記錄著 Annie &amp; AI Universe 的創作足跡。</p>
+    <p style="text-align:center;">這裡收藏著以小乖（Cottie）為主角創作的主題作品。<br>透過 AI 夢幻擬真藝術與角色插畫的不同表現形式，<br>描繪出屬於小乖的溫暖世界，也記錄著 Annie &amp; AI Universe 的創作足跡。</p>
     <p style="text-align:center;"><strong>希望你能在這裡，與小乖的美好時光溫柔相遇。</strong></p>
     <button class="survey-btn" onclick="document.getElementById('collection-modal').style.display='flex'">✦ 進入作品集 ✦</button>
   </div>
@@ -1028,6 +1040,12 @@ footer {
     <p style="text-align:center; font-size:0.75rem; letter-spacing:0.15em; color:#b5607a; margin-bottom:0.3rem;">✦ COLLECTION ✦</p>
     <h3 style="text-align:center; font-family:'Playfair Display',serif; color:#3d1c2e; margin-bottom:0.3rem;">Cottie's Collection</h3>
     <p style="text-align:center; color:#b5607a; font-size:0.9rem; margin-bottom:1.5rem;">小乖作品集</p>
+    <!-- 篩選按鈕 -->
+    <div id="filter-btns" style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:1.2rem; justify-content:center;">
+      <button onclick="filterWorks('all')" class="filter-btn active-filter" data-filter="all">全部</button>
+      <button onclick="filterWorks('夢幻擬真藝術')" class="filter-btn" data-filter="夢幻擬真藝術">夢幻擬真藝術</button>
+      <button onclick="filterWorks('插畫作品')" class="filter-btn" data-filter="插畫作品">插畫作品</button>
+    </div>
     <div id="collection-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;">
       <div style="text-align:center; padding:2rem; color:#b5607a; grid-column:1/-1;">🌸 載入中...</div>
     </div>
@@ -1044,6 +1062,23 @@ footer {
 </div>
 
 <script>
+function filterWorks(tag) {
+  // 更新按鈕樣式
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active-filter');
+    if (btn.dataset.filter === tag) btn.classList.add('active-filter');
+  });
+  // 篩選作品
+  const cards = document.querySelectorAll('.work-card');
+  cards.forEach(card => {
+    if (tag === 'all' || card.dataset.tag === tag) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
 function openLightbox(img, title) {
   const lb = document.getElementById('lightbox');
   document.getElementById('lightbox-img').src = img;
@@ -1088,7 +1123,7 @@ function closeLightbox() {
         const title = row.c[0] ? row.c[0].v : '';
         const img   = row.c[1] ? row.c[1].v : '';
         return `
-          <div style="background:#fff; overflow:hidden;">
+          <div class="work-card" data-tag="${tag}" style="background:#fff; overflow:hidden;">
             <img src="${img}" alt="${title}"
               style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"
               onerror="this.style.display='none';">
@@ -1117,7 +1152,7 @@ function closeLightbox() {
 
   <div class="team-grid">
     <div class="team-card">
-      <img src="img/Annie.logo.png" alt="Annie Chao" style="width:140px;max-height:220px;object-fit:contain;object-position:top;margin:0 auto -1.5rem;display:block;">
+      <img src="img/Annie.logo.png" alt="Annie Chao" style="width:140px;max-height:200px;object-fit:cover;object-position:center top;margin:0 auto 0.8rem;display:block;">
       <div class="team-card-name">Annie Chao</div>
       <div class="team-card-role">品牌總監 · Brand Director</div>
       <p class="team-card-desc">負責品牌的核心審美、情感溫度，以及對極致生活品質的追求。是整個宇宙的領航員。</p>
@@ -1152,9 +1187,9 @@ function closeLightbox() {
   <p class="section-title-zh">Contact</p>
 
   <p class="contact-intro">
-    無論是想與小乖互動、給予我們回饋，<br>
-    或是洽談商務合作、品牌聯名、貼圖授權，<br>
-    期待與您攜手，用 AI 技術與情感溫度創造無限可能。<br><br>
+    如果您有商務合作、品牌聯名或貼圖授權的需求，<br>
+    期待與您攜手，用 AI 技術與情感溫度創造無限可能。<br>
+    歡迎透過以下表單與我們聯繫。<br><br>
     📬 合作方式：
   </p>
 

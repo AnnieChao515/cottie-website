@@ -995,7 +995,7 @@ footer {
     <p><span class="story-italic">The Eyes That Catch You.</span> —— 這是小乖與你相遇的起點。</p>
     <p>在 Annie &amp; AI 創作宇宙裡，小乖不只是可愛的角色，更是一份關於陪伴、溫暖與療癒的記錄。</p>
     <p>從第一張貼圖、第一件作品，到每一次與 AI 共同創作的靈感火花，小乖一步步成長成今天的模樣。</p>
-    <p>小乖的創作作品橫跨角色插畫（Character Illustration）與 AI 夢幻擬真藝術（AI Dreamy Semi-Realistic Art）兩種風格。透過柔和光影、細膩毛髮與童話般的夢幻氛圍，描繪出屬於 Cottie 的溫暖世界。</p>
+    <p>小乖的創作作品，橫跨角色插畫與 AI 夢幻擬真藝術兩種風格。透過柔和光影、細膩毛髮與童話般的夢幻氛圍，描繪出屬於 Cottie 的溫暖世界。</p>
     <p>在這裡，記錄著牠的日常調皮與溫馨瞬間，也記錄著人類創意與 AI 技術攜手創作的美好旅程。</p>
     <p>希望這雙亮晶晶的大眼睛，能成為你每天的快樂焦點。</p>
   </div>
@@ -1122,6 +1122,7 @@ function closeLightbox() {
       grid.innerHTML = dataRows.map(row => {
         const title = row.c[0] ? row.c[0].v : '';
         const img   = row.c[1] ? row.c[1].v : '';
+        const tag   = row.c[2] ? row.c[2].v : '';
         return `
           <div class="work-card" data-tag="${tag}" style="background:#fff; overflow:hidden;">
             <img src="${img}" alt="${title}"
@@ -1152,7 +1153,7 @@ function closeLightbox() {
 
   <div class="team-grid">
     <div class="team-card">
-      <img src="img/Annie.logo.png" alt="Annie Chao" style="width:140px;max-height:200px;object-fit:cover;object-position:center top;margin:0 auto 0.8rem;display:block;">
+      <img src="img/Annie.logo.png" alt="Annie Chao" style="width:140px;max-height:180px;object-fit:contain;object-position:top;margin:-1rem auto 0.5rem;display:block;">
       <div class="team-card-name">Annie Chao</div>
       <div class="team-card-role">品牌總監 · Brand Director</div>
       <p class="team-card-desc">負責品牌的核心審美、情感溫度，以及對極致生活品質的追求。是整個宇宙的領航員。</p>

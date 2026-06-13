@@ -995,7 +995,7 @@ footer {
     <p><span class="story-italic">The Eyes That Catch You.</span> —— 這是小乖與你相遇的起點。</p>
     <p>在 Annie &amp; AI 創作宇宙裡，小乖不只是可愛的角色，更是一份關於陪伴、溫暖與療癒的記錄。</p>
     <p>從第一張貼圖、第一件作品，到每一次與 AI 共同創作的靈感火花，小乖一步步成長成今天的模樣。</p>
-    <p>小乖的創作作品，橫跨角色插畫與 AI 夢幻擬真藝術兩種風格。透過柔和光影、細膩毛髮與童話般的夢幻氛圍，描繪出屬於 Cottie 的溫暖世界。</p>
+    <p>小乖的創作作品，橫跨「角色插畫」與「AI 夢幻擬真藝術」兩種風格。透過柔和光影、細膩毛髮與童話般的夢幻氛圍，描繪出屬於 Cottie 的溫暖世界。</p>
     <p>在這裡，記錄著牠的日常調皮與溫馨瞬間，也記錄著人類創意與 AI 技術攜手創作的美好旅程。</p>
     <p>希望這雙亮晶晶的大眼睛，能成為你每天的快樂焦點。</p>
   </div>
@@ -1027,7 +1027,7 @@ footer {
   <h2 class="section-title-en">Cottie's Collection</h2>
   <p class="section-title-zh">小乖作品集</p>
   <div class="shop-body">
-    <p style="text-align:center;">這裡收藏著以小乖（Cottie）為主角創作的主題作品。<br>透過 AI 夢幻擬真藝術與角色插畫的不同表現形式，<br>描繪出屬於小乖的溫暖世界，也記錄著 Annie &amp; AI Universe 的創作足跡。</p>
+    <p style="text-align:center;">這裡收藏著以小乖（Cottie）為主角創作的主題作品。<br>透過「AI 夢幻擬真藝術」與「角色插畫」的不同表現形式，<br>描繪出屬於小乖的溫暖世界，也記錄著 Annie &amp; AI Universe 的創作足跡。</p>
     <p style="text-align:center;"><strong>希望你能在這裡，與小乖的美好時光溫柔相遇。</strong></p>
     <button class="survey-btn" onclick="document.getElementById('collection-modal').style.display='flex'">✦ 進入作品集 ✦</button>
   </div>
@@ -1079,7 +1079,9 @@ function filterWorks(tag) {
   });
 }
 
-function openLightbox(img, title) {
+function openLightbox(btn) {
+  const img = btn.dataset.img;
+  const title = btn.dataset.title;
   const lb = document.getElementById('lightbox');
   document.getElementById('lightbox-img').src = img;
   document.getElementById('lightbox-title').textContent = title;
@@ -1130,7 +1132,7 @@ function closeLightbox() {
               onerror="this.style.display='none';">
             <div style="padding:0.7rem 0.2rem 0.9rem; text-align:center;">
               <div style="font-size:0.95rem; font-weight:600; color:#3d1c2e; margin-bottom:0.6rem;">${title}</div>
-              <button onclick="openLightbox('${img}','${title}')"
+              <button onclick="openLightbox(this)" data-img="${img}" data-title="${title}"
                 style="background:#fff; border:1.5px solid #ccc; border-radius:8px; padding:0.4rem 1rem; cursor:pointer; font-size:0.78rem; color:#555; line-height:1.5;">
                 放大看圖<br><span style="font-size:0.72rem; color:#999;">View full ↗</span>
               </button>
@@ -1153,7 +1155,7 @@ function closeLightbox() {
 
   <div class="team-grid">
     <div class="team-card">
-      <img src="img/Annie.logo.png" alt="Annie Chao" style="width:140px;max-height:180px;object-fit:contain;object-position:top;margin:-1rem auto 0.5rem;display:block;">
+      <img src="img/Annie.logo.png" alt="Annie Chao" style="width:140px;max-height:160px;object-fit:contain;object-position:center;margin:0 auto 0.8rem;display:block;">
       <div class="team-card-name">Annie Chao</div>
       <div class="team-card-role">品牌總監 · Brand Director</div>
       <p class="team-card-desc">負責品牌的核心審美、情感溫度，以及對極致生活品質的追求。是整個宇宙的領航員。</p>

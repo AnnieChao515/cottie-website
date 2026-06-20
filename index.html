@@ -1101,37 +1101,22 @@ function closeLightbox() {
 }
 
 (function() {
-  const SHEET_ID = '14rDieVN8IK9ELVuxvYpsU7iK1eJlkscydUNcOEA-0E8';
-  const SHEET_NAME = 'Works';
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${SHEET_NAME}`;
+  const url = 'data.json';
 
   fetch(url)
-    .then(res => res.text())
-    .then(text => {
-      const json = JSON.parse(text.substring(47).slice(0, -2));
-      const rows = json.table.rows;
+    .then(res => res.json())
+    .then(dataRows => {
       const grid = document.getElementById('collection-grid');
 
-      if (!rows || rows.length === 0) {
-        grid.innerHTML = '<div style="text-align:center; padding:2rem; color:#b5607a; grid-column:1/-1;">🌸 作品即將上架，敬請期待！</div>';
-        return;
-      }
-
-      // 過濾掉標題列（第一行 title/img/tag）和空白列
-      const dataRows = rows.filter(row => {
-        const val = row.c[0] ? row.c[0].v : '';
-        return val && val !== 'title';
-      });
-
-      if (dataRows.length === 0) {
+      if (!dataRows || dataRows.length === 0) {
         grid.innerHTML = '<div style="text-align:center; padding:2rem; color:#b5607a; grid-column:1/-1;">🌸 作品即將上架，敬請期待！</div>';
         return;
       }
 
       grid.innerHTML = dataRows.map(row => {
-        const title = row.c[0] ? row.c[0].v : '';
-        const img   = row.c[1] ? row.c[1].v : '';
-        const tag   = row.c[2] ? row.c[2].v : '';
+        const title = row.title || '';
+        const img   = row.img || '';
+        const tag   = row.tag || '';
         return `
           <div class="work-card" data-tag="${tag}" style="background:#fff; overflow:hidden;">
             <img src="${img}" alt="${title}"

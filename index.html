@@ -1113,18 +1113,26 @@ function closeLightbox() {
         return;
       }
 
+      const escAttr = (s) => String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
       grid.innerHTML = dataRows.map(row => {
         const title = row.title || '';
         const img   = row.img || '';
         const tag   = row.tag || '';
+        const desc  = row.description || '';
+        const altText = desc ? `${title} - ${desc}` : title;
         return `
           <div class="work-card" data-tag="${tag}" style="background:#fff; overflow:hidden;">
-            <img src="${img}" alt="${title}"
+            <img src="${img}" alt="${escAttr(altText)}"
               style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"
               onerror="this.style.display='none';">
             <div style="padding:0.7rem 0.2rem 0.9rem; text-align:center;">
               <div style="font-size:0.95rem; font-weight:600; color:#3d1c2e; margin-bottom:0.6rem;">${title}</div>
-              <button onclick="openLightbox(this)" data-img="${img}" data-title="${title}"
+              <button onclick="openLightbox(this)" data-img="${img}" data-title="${escAttr(title)}"
                 style="background:#fff; border:1.5px solid #ccc; border-radius:8px; padding:0.4rem 1rem; cursor:pointer; font-size:0.78rem; color:#555; line-height:1.5;">
                 放大看圖<br><span style="font-size:0.72rem; color:#999;">View full ↗</span>
               </button>

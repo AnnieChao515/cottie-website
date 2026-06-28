@@ -719,7 +719,7 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: min(52%, 220px);
+  width: min(38%, 160px);
 }
 .storybook-cottie {
   width: 100%;
@@ -746,8 +746,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 0.8rem;
-  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
   margin-bottom: 1.4rem;
 }
 .storybook-item {
@@ -763,7 +763,7 @@ body {
   50% { transform: translateY(-6px); }
 }
 .storybook-item img {
-  width: clamp(48px, 13vw, 68px);
+  width: clamp(42px, 11vw, 58px);
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
 }
@@ -1231,10 +1231,6 @@ footer {
     </div>
     <div class="storybook-caption-zh">每一段小小的回憶，都悄悄綻放成一個故事。</div>
     <div class="storybook-caption-en">Every little memory blooms into a story.</div>
-    <button class="cottie-heart-btn" onclick="document.getElementById('collection-modal').style.display='flex'">
-      <img src="img/Btn-HeartCottie.png" alt="Cottie 愛心">
-      <span>進入作品集</span>
-    </button>
   </div>
 
 </section>
@@ -1247,7 +1243,10 @@ footer {
   <div class="shop-body">
     <p style="text-align:center;">這裡收藏著以小乖（Cottie）為主角創作的主題作品。<br>透過「AI 夢幻擬真藝術」與「角色插畫」的不同表現形式，<br>描繪出屬於小乖的溫暖世界，也記錄著 Annie &amp; AI Universe 的創作足跡。</p>
     <p style="text-align:center;"><strong>希望你能在這裡，與小乖的美好時光溫柔相遇。</strong></p>
-    <button class="survey-btn" onclick="document.getElementById('collection-modal').style.display='flex'">✦ 進入作品集 ✦</button>
+    <button class="cottie-heart-btn" onclick="document.getElementById('collection-modal').style.display='flex'">
+        <img src="img/Btn-HeartCottie.png" alt="Cottie 愛心">
+        <span>進入作品集</span>
+      </button>
   </div>
 
 </section>

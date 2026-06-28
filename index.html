@@ -721,6 +721,14 @@ body {
   transform: translateX(-50%);
   width: min(38%, 160px);
 }
+@media (min-width: 600px) {
+  .storybook-cottie-wrap { width: min(30%, 260px); }
+  .storybook-item img { width: clamp(60px, 8vw, 90px); }
+}
+@media (min-width: 900px) {
+  .storybook-cottie-wrap { width: min(25%, 320px); }
+  .storybook-item img { width: clamp(70px, 7vw, 100px); }
+}
 .storybook-cottie {
   width: 100%;
   height: auto;
@@ -1201,7 +1209,7 @@ footer {
     <p>我們始終相信，科技也能擁有最柔軟的溫度。</p>
   </div>
 
-
+</section>
 
 <!-- STORYBOOK GARDEN -->
 <section class="storybook-section" id="storybook">

@@ -670,6 +670,162 @@ body {
   color: #c0a0b0;
 }
 
+/* ===== STORYBOOK GARDEN ===== */
+.storybook-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #f5ede8;
+}
+.storybook-bg {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  min-height: 300px;
+}
+.storybook-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.8rem 1.2rem 1.6rem;
+}
+
+/* 上方文案 */
+.storybook-title-wrap {
+  text-align: center;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(4px);
+  border-radius: 16px;
+  padding: 0.7rem 1.4rem 0.6rem;
+  border: 1px solid rgba(255,255,255,0.7);
+}
+.storybook-title-en {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 5vw, 1.9rem);
+  font-weight: 700;
+  color: var(--warm-brown);
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+}
+.storybook-title-zh {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  margin-bottom: 0.15rem;
+}
+.storybook-title-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--deep-rose);
+}
+
+/* Cottie 淡入淡出 */
+.storybook-cottie-wrap {
+  position: relative;
+  width: min(200px, 48vw);
+  margin: 0.5rem auto;
+}
+.storybook-cottie {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 20px rgba(181,96,122,0.2));
+  animation: cottiePulse 15s ease-in-out infinite;
+}
+@keyframes cottiePulse {
+  0%   { opacity: 1; }
+  67%  { opacity: 1; }   /* 顯示 10s */
+  83%  { opacity: 0; }   /* 淡出 2.5s */
+  100% { opacity: 1; }   /* 淡入 2.5s */
+}
+
+/* 五小物 */
+.storybook-items {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 0.3rem 0;
+}
+.storybook-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  animation: itemFloat 3s ease-in-out infinite;
+}
+.storybook-item:nth-child(1) { animation-delay: 0s; }
+.storybook-item:nth-child(2) { animation-delay: 0.4s; }
+.storybook-item:nth-child(3) { animation-delay: 0.8s; }
+.storybook-item:nth-child(4) { animation-delay: 1.2s; }
+.storybook-item:nth-child(5) { animation-delay: 1.6s; }
+@keyframes itemFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.storybook-item img {
+  width: clamp(44px, 11vw, 62px);
+  height: auto;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
+}
+
+/* 下方文案 */
+.storybook-caption {
+  text-align: center;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(4px);
+  border-radius: 16px;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid rgba(255,255,255,0.7);
+}
+.storybook-caption-zh {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  margin-bottom: 0.2rem;
+}
+.storybook-caption-en {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--deep-rose);
+  margin-bottom: 0.8rem;
+}
+
+/* 愛心按鈕 */
+.cottie-heart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(181,96,122,0.3);
+  border-radius: 50px;
+  padding: 0.5rem 1.2rem 0.5rem 0.6rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(181,96,122,0.2);
+  margin-top: 0.4rem;
+}
+.cottie-heart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(181,96,122,0.3);
+}
+.cottie-heart-btn img {
+  width: 36px;
+  height: auto;
+}
+.cottie-heart-btn span {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--deep-rose);
+}
+
 /* ===== SHOP ===== */
 .shop-section {
   background: #fdf5f7;
@@ -1058,6 +1214,41 @@ footer {
   </div>
 
 
+
+<!-- STORYBOOK GARDEN -->
+<section class="storybook-section" id="storybook">
+  <img src="img/L1_StorybookGarden.jpg" alt="Cottie's Storybook Garden 故事花園背景" class="storybook-bg">
+  <div class="storybook-overlay">
+
+    <div class="storybook-title-wrap">
+      <div class="storybook-title-en">The Storybook Garden</div>
+      <div class="storybook-title-zh">歡迎走進 Cottie 的故事花園</div>
+      <div class="storybook-title-italic">Welcome to Cottie's Storybook World</div>
+    </div>
+
+    <div class="storybook-cottie-wrap">
+      <img src="img/L2_Cottie_Standing.png" alt="Cottie 小乖站姿形象 IP" class="storybook-cottie">
+    </div>
+
+    <div class="storybook-items">
+      <div class="storybook-item"><img src="img/EaselPainting.png" alt="畫架與畫作"></div>
+      <div class="storybook-item"><img src="img/TeddyBear.png" alt="泰迪熊"></div>
+      <div class="storybook-item"><img src="img/FlowerBouquet.png" alt="花束"></div>
+      <div class="storybook-item"><img src="img/VintageCamera.png" alt="復古相機"></div>
+      <div class="storybook-item"><img src="img/TravelJournal.png" alt="旅遊日記本"></div>
+    </div>
+
+    <div class="storybook-caption">
+      <div class="storybook-caption-zh">每一段小小的回憶，都悄悄綻放成一個故事。</div>
+      <div class="storybook-caption-en">Every little memory blooms into a story.</div>
+      <button class="cottie-heart-btn" onclick="document.getElementById('collection-modal').style.display='flex'">
+        <img src="img/Btn-HeartCottie.png" alt="Cottie 愛心">
+        <span>進入作品集</span>
+      </button>
+    </div>
+
+  </div>
+</section>
 
 <!-- SHOP -->
 <section class="shop-section" id="shop">

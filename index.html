@@ -726,18 +726,20 @@ body {
   height: auto;
   display: block;
   filter: drop-shadow(0 8px 24px rgba(181,96,122,0.25));
-  animation: cottiePulse 15s ease-in-out infinite;
+  animation: cottiePulse 30s ease-in-out infinite;
 }
 @keyframes cottiePulse {
-  0%   { opacity: 1; }
-  67%  { opacity: 1; }
-  83%  { opacity: 0; }
-  100% { opacity: 1; }
+  0%   { opacity: 0; }   /* 一開始隱藏，先看花園 */
+  33%  { opacity: 0; }   /* 隱藏 10s */
+  43%  { opacity: 1; }   /* 淡入 3s */
+  67%  { opacity: 1; }   /* 顯示 10s */
+  77%  { opacity: 0; }   /* 淡出 3s */
+  100% { opacity: 0; }   /* 隱藏等待下一輪 */
 }
 
 /* 下方區：小物 + 文案 + 按鈕（圖片外） */
 .storybook-footer {
-  padding: 1.6rem 1.5rem 2rem;
+  padding: 1.2rem 1.5rem 1.4rem;
   background: #fdf5f7;
 }
 
@@ -783,33 +785,33 @@ body {
   margin-bottom: 1.2rem;
 }
 
-/* 愛心按鈕 */
+/* 愛心按鈕（Collection 區） */
 .cottie-heart-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(255,255,255,0.85);
-  border: 1.5px solid rgba(181,96,122,0.3);
+  gap: 0.6rem;
+  background: var(--deep-rose);
+  border: none;
   border-radius: 50px;
-  padding: 0.5rem 1.2rem 0.5rem 0.6rem;
+  padding: 0.75rem 1.8rem 0.75rem 1.2rem;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 14px rgba(181,96,122,0.2);
-  margin-top: 0.4rem;
+  box-shadow: 0 6px 18px rgba(181,96,122,0.35);
+  margin-top: 0.5rem;
 }
 .cottie-heart-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(181,96,122,0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(181,96,122,0.45);
 }
 .cottie-heart-btn img {
-  width: 36px;
+  width: 32px;
   height: auto;
 }
 .cottie-heart-btn span {
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
-  font-size: 0.92rem;
-  color: var(--deep-rose);
+  font-size: 1rem;
+  color: #ffffff;
 }
 
 /* ===== SHOP ===== */
@@ -1047,7 +1049,7 @@ footer {
       <div class="nav-card-title">關於小乖故事</div>
       <div class="nav-card-subtitle">The Story of Cottie</div>
     </div>
-    <div class="nav-card" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+    <div class="nav-card" onclick="document.getElementById('storybook').scrollIntoView({behavior:'smooth'})">
       <div class="nav-card-icon">🛍️</div>
       <div class="nav-card-title">小乖作品集</div>
       <div class="nav-card-subtitle">Cottie's Collection</div>

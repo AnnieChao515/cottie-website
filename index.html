@@ -738,15 +738,11 @@ body {
   height: auto;
   display: block;
   filter: drop-shadow(0 8px 24px rgba(181,96,122,0.25));
-  animation: cottiePulse 30s ease-in-out infinite;
+  animation: cottieFloat 7s ease-in-out infinite;
 }
-@keyframes cottiePulse {
-  0%   { opacity: 0; }   /* 一開始隱藏，先看花園 */
-  33%  { opacity: 0; }   /* 隱藏 10s */
-  43%  { opacity: 1; }   /* 淡入 3s */
-  67%  { opacity: 1; }   /* 顯示 10s */
-  77%  { opacity: 0; }   /* 淡出 3s */
-  100% { opacity: 0; }   /* 隱藏等待下一輪 */
+@keyframes cottieFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
 }
 
 /* 下方區：小物 + 文案 + 按鈕（圖片外） */
@@ -771,17 +767,17 @@ body {
   width: calc(33.33% - 1rem);
   display: flex;
   justify-content: center;
-  animation: itemFloat 3s ease-in-out infinite;
 }
-.storybook-item:nth-child(1) { animation-delay: 0s; }
-.storybook-item:nth-child(2) { animation-delay: 0.4s; }
-.storybook-item:nth-child(3) { animation-delay: 0.8s; }
-.storybook-item:nth-child(4) { animation-delay: 1.2s; }
-.storybook-item:nth-child(5) { animation-delay: 1.6s; }
-.storybook-item:nth-child(6) { animation-delay: 2.0s; }
-@keyframes itemFloat {
+/* 各小物獨立動畫時間與 delay，像微風吹拂 */
+.storybook-item:nth-child(1) { animation: breeze 5.8s ease-in-out 0.3s infinite; }
+.storybook-item:nth-child(2) { animation: breeze 6.6s ease-in-out 1.2s infinite; }
+.storybook-item:nth-child(3) { animation: breeze 5.2s ease-in-out 0.7s infinite; }
+.storybook-item:nth-child(4) { animation: breeze 7.1s ease-in-out 2.0s infinite; }
+.storybook-item:nth-child(5) { animation: breeze 6.3s ease-in-out 1.5s infinite; }
+.storybook-item:nth-child(6) { animation: breeze 5.6s ease-in-out 0.9s infinite; }
+@keyframes breeze {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  50% { transform: translateY(-3px); }
 }
 .storybook-item img {
   width: clamp(64px, 18vw, 88px);

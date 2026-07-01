@@ -575,19 +575,44 @@ body {
   padding: 4rem 1.5rem;
   text-align: center;
 }
+.sticker-header {
+  padding: 2.5rem 1.5rem 1rem;
+  background: var(--section-bg);
+  text-align: center;
+}
+.sticker-sub-en {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+.sticker-sub-zh {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  margin-bottom: 0;
+}
+.sticker-section-title {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--warm-brown);
+  margin: 0.8rem auto 1.2rem;
+}
 .sticker-ip-wrap {
-  margin: 1.5rem auto 0.5rem;
+  margin: 1.5rem auto 0.3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
 }
 .sticker-ip-wrap img {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   object-fit: contain;
   animation: cottie-wave 9s ease-in-out infinite;
   transform-origin: bottom center;
+  filter: drop-shadow(0 6px 16px rgba(181,96,122,0.18));
 }
 @keyframes cottie-wave {
   0%   { transform: rotate(0deg); }
@@ -596,12 +621,6 @@ body {
   94%  { transform: rotate(-3deg); }
   97%  { transform: rotate(3deg); }
   100% { transform: rotate(0deg); }
-}
-.sticker-ip-label {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 0.75rem;
-  color: var(--rose);
-  letter-spacing: 0.08em;
 }
 .sticker-intro {
   font-family: 'Noto Serif TC', serif;
@@ -1204,14 +1223,24 @@ footer {
 
 <!-- STICKERS -->
 <section class="stickers-section" id="stickers">
-  <p class="section-label">LINE STICKERS</p>
-  <h2 class="section-title-en">Cottie's Stickers</h2>
-  <p class="section-title-zh">小乖貼圖作品區</p>
 
+  <!-- 上方文案 -->
+  <div class="sticker-header">
+    <p class="section-label">LINE STICKERS</p>
+    <div class="storybook-title-en">Cottie's Stickers</div>
+    <div class="storybook-title-italic">Welcome to Cottie's Sticker Collection.</div>
+    <div class="storybook-title-zh">歡迎來到 Cottie 的貼圖作品區。</div>
+    <div class="sticker-sub-en">Cute little stickers for every little moment.</div>
+    <div class="sticker-sub-zh">每一個小小日常，都有一張可愛貼圖陪伴。</div>
+  </div>
+
+  <!-- Cottie IP 形象圖 -->
   <div class="sticker-ip-wrap">
     <img src="img/cottie-Stickers.png" alt="Cottie 小乖官方 IP 形象圖 — 穿著格紋洋裝揮手打招呼的超萌馬爾濟斯">
-    <span class="sticker-ip-label">⭐ Cottie 官方形象 IP</span>
   </div>
+
+  <!-- 小乖貼圖作品區標題 -->
+  <div class="sticker-section-title">小乖貼圖作品區</div>
 
   <p class="sticker-intro">
     小乖的第一彈 LINE 貼圖正式登場！<br>

@@ -575,6 +575,34 @@ body {
   padding: 4rem 1.5rem;
   text-align: center;
 }
+.sticker-ip-wrap {
+  margin: 1.5rem auto 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+.sticker-ip-wrap img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  animation: cottie-wave 9s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes cottie-wave {
+  0%   { transform: rotate(0deg); }
+  88%  { transform: rotate(0deg); }
+  91%  { transform: rotate(4deg); }
+  94%  { transform: rotate(-3deg); }
+  97%  { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+.sticker-ip-label {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.75rem;
+  color: var(--rose);
+  letter-spacing: 0.08em;
+}
 .sticker-intro {
   font-family: 'Noto Serif TC', serif;
   font-size: 0.92rem;
@@ -1179,6 +1207,11 @@ footer {
   <p class="section-label">LINE STICKERS</p>
   <h2 class="section-title-en">Cottie's Stickers</h2>
   <p class="section-title-zh">小乖貼圖作品區</p>
+
+  <div class="sticker-ip-wrap">
+    <img src="img/cottie-Stickers.png" alt="Cottie 小乖官方 IP 形象圖 — 穿著格紋洋裝揮手打招呼的超萌馬爾濟斯">
+    <span class="sticker-ip-label">⭐ Cottie 官方形象 IP</span>
+  </div>
 
   <p class="sticker-intro">
     小乖的第一彈 LINE 貼圖正式登場！<br>

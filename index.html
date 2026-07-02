@@ -1244,7 +1244,7 @@ footer {
   <div class="sticker-section-title">小乖貼圖作品區</div>
 
   <p class="sticker-intro">
-    小乖的第一彈 LINE 貼圖正式登場！<br>
+    ⭐ 小乖的第一彈 LINE 貼圖已正式上架開賣！<br>
     嚴選 16 款超萌日常表情，<br>
     讓 Cottie 用最融化的眼神，替你傳達每一天的喜怒哀樂。<br>
     讓聊天室的每一次對話，都變成被治癒的瞬間！
@@ -1445,13 +1445,26 @@ function closeLightbox() {
         .replace(/>/g, '&gt;');
 
       grid.innerHTML = dataRows.map(row => {
-        const title = row.title || '';
-        const img   = row.img || '';
-        const tag   = row.tag || '';
-        const desc  = row.description || '';
-        const altText = desc ? `${title} - ${desc}` : title;
+        const title    = row.title || '';
+        const img      = row.img || '';
+        const tag      = row.tag || '';
+        const desc     = row.description || '';
+        const featured = row.featured || false;
+        const altText  = desc ? `${title} - ${desc}` : title;
+
+        let badge = '';
+        let cardBorder = '';
+        if (featured === 'gold') {
+          badge = `<div style="position:absolute;top:8px;right:8px;background:linear-gradient(135deg,#c9a96e,#e8c97a);color:#fff;font-size:0.72rem;font-weight:700;padding:3px 8px;border-radius:20px;box-shadow:0 2px 6px rgba(0,0,0,0.18);letter-spacing:0.04em;">👑 嚴選</div>`;
+          cardBorder = 'box-shadow:0 0 0 2px #c9a96e, 0 4px 16px rgba(201,169,110,0.25);';
+        } else if (featured === 'star') {
+          badge = `<div style="position:absolute;top:8px;right:8px;background:linear-gradient(135deg,#b5607a,#d4849a);color:#fff;font-size:0.72rem;font-weight:700;padding:3px 8px;border-radius:20px;box-shadow:0 2px 6px rgba(0,0,0,0.15);letter-spacing:0.04em;">⭐ 嚴選</div>`;
+          cardBorder = 'box-shadow:0 0 0 2px #b5607a, 0 4px 16px rgba(181,96,122,0.18);';
+        }
+
         return `
-          <div class="work-card" data-tag="${tag}" style="background:#fff; overflow:hidden;">
+          <div class="work-card" data-tag="${tag}" style="background:#fff; overflow:hidden; position:relative; ${cardBorder}">
+            ${badge}
             <img src="${img}" alt="${escAttr(altText)}"
               style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"
               onerror="this.style.display='none';">

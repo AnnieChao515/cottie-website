@@ -1452,24 +1452,23 @@ function closeLightbox() {
         const featured = row.featured || false;
         const altText  = desc ? `${title} - ${desc}` : title;
 
-        let badge = '';
+        let badgeText = '';
         let cardBorder = '';
         if (featured === 'gold') {
-          badge = `<div style="position:absolute;top:8px;right:8px;background:linear-gradient(135deg,#c9a96e,#e8c97a);color:#fff;font-size:0.72rem;font-weight:700;padding:3px 8px;border-radius:20px;box-shadow:0 2px 6px rgba(0,0,0,0.18);letter-spacing:0.04em;">👑 嚴選</div>`;
+          badgeText = '👑 ';
           cardBorder = 'box-shadow:0 0 0 2px #c9a96e, 0 4px 16px rgba(201,169,110,0.25);';
         } else if (featured === 'star') {
-          badge = `<div style="position:absolute;top:8px;right:8px;background:linear-gradient(135deg,#b5607a,#d4849a);color:#fff;font-size:0.72rem;font-weight:700;padding:3px 8px;border-radius:20px;box-shadow:0 2px 6px rgba(0,0,0,0.15);letter-spacing:0.04em;">⭐ 嚴選</div>`;
+          badgeText = '⭐ ';
           cardBorder = 'box-shadow:0 0 0 2px #b5607a, 0 4px 16px rgba(181,96,122,0.18);';
         }
 
         return `
           <div class="work-card" data-tag="${tag}" style="background:#fff; overflow:hidden; position:relative; ${cardBorder}">
-            ${badge}
             <img src="${img}" alt="${escAttr(altText)}"
               style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"
               onerror="this.style.display='none';">
             <div style="padding:0.7rem 0.2rem 0.9rem; text-align:center;">
-              <div style="font-size:0.95rem; font-weight:600; color:#3d1c2e; margin-bottom:0.6rem;">${title}</div>
+              <div style="font-size:0.95rem; font-weight:600; color:#3d1c2e; margin-bottom:0.6rem;">${badgeText}${title}</div>
               <button onclick="openLightbox(this)" data-img="${img}" data-title="${escAttr(title)}"
                 style="background:#fff; border:1.5px solid #ccc; border-radius:8px; padding:0.4rem 1rem; cursor:pointer; font-size:0.78rem; color:#555; line-height:1.5;">
                 放大看圖<br><span style="font-size:0.72rem; color:#999;">View full ↗</span>
